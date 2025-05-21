@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" tests="3" failures="0" skipped="0">
+        <properties>
+            <property name="@crearGuia" value="true">
+            </property>
+            <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
+            </property>
+        </properties>
+        <testcase name="Given que tengo el microservicio de creacion de guias" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.0052516">
+        </testcase>
+        <testcase name="When al realizar la peticion" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="3.183191299">
+        </testcase>
+        <testcase name="Then el servicio debe responder con 200 y &quot;false&quot;" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.0143729">
+        </testcase>
+    </testsuite>
+</testsuites>

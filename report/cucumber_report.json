@@ -1,0 +1,84 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "creacion-de-una-guia-con-rce;creacion-de-guia-exitosa",
+        "keyword": "Scenario Outline",
+        "line": 10,
+        "name": "Creacion de guia exitosa",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1175217899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "que tengo el microservicio de creacion de guias",
+            "match": {
+              "location": "src\\tests\\ApiTest.ts:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5251600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "al realizar la peticion",
+            "match": {
+              "location": "src\\tests\\ApiTest.ts:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3183191299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "el servicio debe responder con 200 y \"false\"",
+            "match": {
+              "location": "src\\tests\\ApiTest.ts:22"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 14372900
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 209454900
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@crearGuia",
+            "line": 3
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "creacion-de-una-guia-con-rce",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Creacion de una guia con RCE",
+    "tags": [],
+    "uri": "src\\objetives\\MicroServicioCrearGuias.feature"
+  }
+]
