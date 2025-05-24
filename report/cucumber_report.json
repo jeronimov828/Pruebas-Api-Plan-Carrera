@@ -4,81 +4,228 @@
     "elements": [
       {
         "description": "",
-        "id": "creacion-de-una-guia-con-rce;creacion-de-guia-exitosa",
+        "id": "consulta-de-guias;consulta-de-guias-para-diferentes-paises",
         "keyword": "Scenario Outline",
-        "line": 10,
-        "name": "Creacion de guia exitosa",
+        "line": 11,
+        "name": "consulta de guias para diferentes paises",
         "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 1175217899
-            }
-          },
           {
             "arguments": [],
             "keyword": "Given ",
             "line": 5,
-            "name": "que tengo el microservicio de creacion de guias",
+            "name": "que cree una guia para colombia o para mexico",
             "match": {
-              "location": "src\\tests\\ApiTest.ts:11"
+              "location": "src\\tests\\ApiTestConsulta.ts:12"
             },
             "result": {
-              "status": "passed",
-              "duration": 5251600
+              "status": "failed",
+              "duration": 1379899,
+              "error_message": "Error: Fallo en la petición: TypeError: Cannot read properties of undefined (reading 'post')\n    at PeticionCrearGuia.<anonymous> (C:\\Users\\jeron\\Desktop\\Screenplay\\src\\actors\\apiActor_request.ts:21:19)\n    at fulfilled (C:\\Users\\jeron\\Desktop\\Screenplay\\src\\actors\\apiActor_request.ts:5:58)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "quiero consultar la informacion de la guia creada",
+            "match": {
+              "location": "src\\tests\\ApiTestConsulta.ts:34"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 6,
-            "name": "al realizar la peticion",
+            "line": 7,
+            "name": "envie la peticion al servicio",
             "match": {
-              "location": "src\\tests\\ApiTest.ts:15"
+              "location": "src\\tests\\ApiTestConsulta.ts:38"
             },
             "result": {
-              "status": "passed",
-              "duration": 3183191299
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 7,
-            "name": "el servicio debe responder con 200 y \"false\"",
+            "line": 8,
+            "name": "debo poder ver el pais asociado a la guia y el 200",
             "match": {
-              "location": "src\\tests\\ApiTest.ts:22"
+              "location": "src\\tests\\ApiTestConsulta.ts:53"
             },
             "result": {
-              "status": "passed",
-              "duration": 14372900
+              "status": "skipped",
+              "duration": 0
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "passed",
-              "duration": 209454900
+              "status": "failed",
+              "duration": 641900,
+              "error_message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jeron\\Desktop\\Screenplay\\report\\99a10afe-93f3-425f-831a-e7503cd6e43e.png'"
             }
           }
         ],
         "tags": [
           {
-            "name": "@crearGuia",
+            "name": "@ConsultaGuias",
             "line": 3
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "consulta-de-guias;consulta-de-guia-que-no-existe",
+        "keyword": "Scenario Outline",
+        "line": 20,
+        "name": "consulta de guia que no existe",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 15,
+            "name": "que voy a utlizar el microservicio de consulta de guias en test",
+            "match": {
+              "location": "src\\tests\\ApiTestConsulta.ts:69"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 275599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 16,
+            "name": "envie la peticion al servicio de consulta con un numero de guia que no existe",
+            "match": {
+              "location": "src\\tests\\ApiTestConsulta.ts:73"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1297000,
+              "error_message": "Error: Fallo en la petición: Cannot read properties of undefined (reading 'get')\n    at PeticionConsultarGuia.<anonymous> (C:\\Users\\jeron\\Desktop\\Screenplay\\src\\actors\\ApiConsultaGuias_request.ts:28:15)\n    at fulfilled (C:\\Users\\jeron\\Desktop\\Screenplay\\src\\actors\\ApiConsultaGuias_request.ts:5:58)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "el sistema hara ka consulta y traera un 200 pero sin nada de informacion",
+            "result": {
+              "status": "undefined",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 460900,
+              "error_message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jeron\\Desktop\\Screenplay\\report\\e352725f-57ca-4ff1-8d72-8a6db0000636.png'"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@ConsultaGuias",
+            "line": 13
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "consulta-de-guias;consulta-del-nivel-de-servicio-de-la-guia",
+        "keyword": "Scenario Outline",
+        "line": 30,
+        "name": "consulta del nivel de servicio de la guia",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 24,
+            "name": "que cree una guia con nivel de servicio 22",
+            "match": {
+              "location": "src\\tests\\ApiTestConsulta.ts:115"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 1353599,
+              "error_message": "Error: Fallo en la petición: TypeError: Cannot read properties of undefined (reading 'post')\n    at PeticionCrearGuia.<anonymous> (C:\\Users\\jeron\\Desktop\\Screenplay\\src\\actors\\apiActor_request.ts:21:19)\n    at fulfilled (C:\\Users\\jeron\\Desktop\\Screenplay\\src\\actors\\apiActor_request.ts:5:58)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "quiero consultar la informacion de la guia que se creo",
+            "match": {
+              "location": "src\\tests\\ApiTestConsulta.ts:134"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 26,
+            "name": "envie la peticion al servicio de consulta",
+            "match": {
+              "location": "src\\tests\\ApiTestConsulta.ts:138"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "debo poder ver el nivel de servicio en la informacion de la guia y el 200",
+            "match": {
+              "location": "src\\tests\\ApiTestConsulta.ts:156"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "failed",
+              "duration": 491800,
+              "error_message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jeron\\Desktop\\Screenplay\\report\\88d7b58b-e798-4cd8-9322-dd4030c560ae.png'"
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@ConsultaGuias",
+            "line": 22
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "creacion-de-una-guia-con-rce",
+    "id": "consulta-de-guias",
     "line": 1,
     "keyword": "Feature",
-    "name": "Creacion de una guia con RCE",
+    "name": "Consulta de guias",
     "tags": [],
-    "uri": "src\\objetives\\MicroServicioCrearGuias.feature"
+    "uri": "src\\objetives\\MicroServicioConsultaDeGuias.feature"
   }
 ]

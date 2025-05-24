@@ -5,6 +5,7 @@ export default class PeticionCrearGuia {
     async sendRequest(requestBody: string): Promise<APIResponse> {
         try {
             const Crear = await manager.getContext();
+            console.log('Crear:', Crear);
             const response = await Crear.post('/guias/cm-guias-ms/guia', {
                 headers: { 'Content-Type': 'application/json' },
                 data: requestBody,

@@ -1,17 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-    <testsuite name="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" tests="3" failures="0" skipped="0">
+    <testsuite name="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" tests="5" failures="0" skipped="0">
         <properties>
             <property name="@crearGuia" value="true">
             </property>
             <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
             </property>
         </properties>
-        <testcase name="Given que tengo el microservicio de creacion de guias" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.0052516">
+        <testcase name="Given que tengo el microservicio de creación de guías" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.000465799">
         </testcase>
-        <testcase name="When al realizar la peticion" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="3.183191299">
+        <testcase name="And tengo el cuerpo de la solicitud armado correctamente" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.0002831">
         </testcase>
-        <testcase name="Then el servicio debe responder con 200 y &quot;false&quot;" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.0143729">
+        <testcase name="When envié la petición" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="2.731380999">
+        </testcase>
+        <testcase name="Then debo poder ver la respuesta de la petición y un 200" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.0027352">
+        </testcase>
+        <testcase name="And la información del numero de la guía creada" classname="creacion-de-una-guia-con-rce;creacion-de-guia-exitosa" time="0.0057155">
+        </testcase>
+    </testsuite>
+    <testsuite name="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-en-el-valor-a-recaudar" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="@crearGuia" value="true">
+            </property>
+            <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
+            </property>
+        </properties>
+        <testcase name="Given que tengo el microservicio de creación de guías listo" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-en-el-valor-a-recaudar" time="0.0006399">
+        </testcase>
+        <testcase name="And tengo el cuerpo de la solicitud armado con exceso en el valor a recaudar" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-en-el-valor-a-recaudar" time="0.000384299">
+        </testcase>
+        <testcase name="When envié la petición con el error" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-en-el-valor-a-recaudar" time="0.121673999">
+        </testcase>
+        <testcase name="Then debo poder ver la respuesta de la petición con un 400" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-en-el-valor-a-recaudar" time="0.003193">
+        </testcase>
+        <testcase name="And un mensaje informativo con &quot;Los valores de entrada no son correctos.&quot;" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-en-el-valor-a-recaudar" time="0.0108427">
+        </testcase>
+    </testsuite>
+    <testsuite name="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-de-caracteres-en-el-campo-referencia" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="@crearGuia" value="true">
+            </property>
+            <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
+            </property>
+        </properties>
+        <testcase name="Given que tengo el microservicio que se utliza para crear las guias" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-de-caracteres-en-el-campo-referencia" time="0.000353799">
+        </testcase>
+        <testcase name="And tengo el cuerpo de la solicitud armado con exceso en el valor del campo referencia" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-de-caracteres-en-el-campo-referencia" time="0.000210299">
+        </testcase>
+        <testcase name="When envié la petición al servicio" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-de-caracteres-en-el-campo-referencia" time="0.1282208">
+        </testcase>
+        <testcase name="Then me debe responder con un 400" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-de-caracteres-en-el-campo-referencia" time="0.002243999">
+        </testcase>
+        <testcase name="And un mensaje de error con la &quot;El campo referenciaRecaudo excede la cantidad de caracteres permitidos, 30&quot;" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-exceso-de-caracteres-en-el-campo-referencia" time="0.0100325">
+        </testcase>
+    </testsuite>
+    <testsuite name="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-referencia-de-recaudo-vacío" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="@crearGuia" value="true">
+            </property>
+            <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
+            </property>
+        </properties>
+        <testcase name="Given que quiero utilizar el microservicio de creacion de guias" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-referencia-de-recaudo-vacío" time="0.000299399">
+        </testcase>
+        <testcase name="And tengo el cuerpo de la solicitud armado con el campo Referencia de recaudo vacio" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-referencia-de-recaudo-vacío" time="0.000229199">
+        </testcase>
+        <testcase name="When envié la petición con el campo vacio al microservicio" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-referencia-de-recaudo-vacío" time="0.1236849">
+        </testcase>
+        <testcase name="Then me debe devolver la respuesta a la peticion con un 400" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-referencia-de-recaudo-vacío" time="0.003656299">
+        </testcase>
+        <testcase name="And un mensaje con &quot;El campo referenciaRecaudo no puede estar vacío&quot;" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-referencia-de-recaudo-vacío" time="0.013899099">
+        </testcase>
+    </testsuite>
+    <testsuite name="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-valor-a-recaudar-vacío" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="@crearGuia" value="true">
+            </property>
+            <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
+            </property>
+        </properties>
+        <testcase name="Given que tengo disponible el microservicio de creación de guías" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-valor-a-recaudar-vacío" time="0.000321199">
+        </testcase>
+        <testcase name="And tengo el cuerpo de la solicitud armado con el campo valor a recaudar vacío" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-valor-a-recaudar-vacío" time="0.0002344">
+        </testcase>
+        <testcase name="When envié la petición para este microservicio" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-valor-a-recaudar-vacío" time="0.1253868">
+        </testcase>
+        <testcase name="Then debo poder ver en la respuesta de la petición un error con un 400" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-valor-a-recaudar-vacío" time="0.0024197">
+        </testcase>
+        <testcase name="And un mensaje informativo que me informa que &quot;El campo valorRecaudar debe ser un número&quot;" classname="creacion-de-una-guia-con-rce;intento-de-creación-de-la-guía-con-campo-valor-a-recaudar-vacío" time="0.0118004">
+        </testcase>
+    </testsuite>
+    <testsuite name="creacion-de-una-guia-con-rce;consulta-de-la-guía-creada" tests="4" failures="0" skipped="0">
+        <properties>
+            <property name="@crearGuia" value="true">
+            </property>
+            <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
+            </property>
+        </properties>
+        <testcase name="Given que tengo el endpoint para consultar la información e las guías" classname="creacion-de-una-guia-con-rce;consulta-de-la-guía-creada" time="0.000556999">
+        </testcase>
+        <testcase name="When haga el envió de la petición con una de las guías que cree" classname="creacion-de-una-guia-con-rce;consulta-de-la-guía-creada" time="0.8741637">
+        </testcase>
+        <testcase name="Then debo poder ver en la respuesta a la solicitud de la consulta un 200" classname="creacion-de-una-guia-con-rce;consulta-de-la-guía-creada" time="0.001717699">
+        </testcase>
+        <testcase name="And también debo poder ver la información de la guía que se consulto" classname="creacion-de-una-guia-con-rce;consulta-de-la-guía-creada" time="0.009851899">
+        </testcase>
+    </testsuite>
+    <testsuite name="creacion-de-una-guia-con-rce;creacion-de-guia-con-valores-aleatorios-en-el-detalle" tests="5" failures="0" skipped="0">
+        <properties>
+            <property name="@crearGuia" value="true">
+            </property>
+            <property name="URI" value="src\objetives\MicroServicioCrearGuias.feature">
+            </property>
+        </properties>
+        <testcase name="Given que tengo el microservicio que se utliza para la creacion de guias en test" classname="creacion-de-una-guia-con-rce;creacion-de-guia-con-valores-aleatorios-en-el-detalle" time="0.0002991">
+        </testcase>
+        <testcase name="And genere el cuerpo de la peticion con valores aleatorios en el detalle" classname="creacion-de-una-guia-con-rce;creacion-de-guia-con-valores-aleatorios-en-el-detalle" time="0.000235699">
+        </testcase>
+        <testcase name="When haga el envió de la petición para crear" classname="creacion-de-una-guia-con-rce;creacion-de-guia-con-valores-aleatorios-en-el-detalle" time="2.465735699">
+        </testcase>
+        <testcase name="Then debo poder ver en la respuesta de la solicitud un 200" classname="creacion-de-una-guia-con-rce;creacion-de-guia-con-valores-aleatorios-en-el-detalle" time="0.0023992">
+        </testcase>
+        <testcase name="And tambien debo poder ver como se crean guias diferentes ubl" classname="creacion-de-una-guia-con-rce;creacion-de-guia-con-valores-aleatorios-en-el-detalle" time="0.0105799">
         </testcase>
     </testsuite>
 </testsuites>
