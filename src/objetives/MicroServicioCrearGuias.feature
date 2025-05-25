@@ -142,7 +142,7 @@ Feature: Creacion de una guia con RCE
 
 
     @crearGuia
-    Scenario: intento de creación con cuerpo vacío
+    Scenario Outline: intento de creación con cuerpo vacío
         Given que no envío ningún cuerpo en la solicitud
         When realizo la petición al microservicio
         Then debo obtener un <statusCode>
