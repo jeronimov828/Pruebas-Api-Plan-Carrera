@@ -17,6 +17,11 @@ import {
     mainURL = 'https://apiv2-test.coordinadora.com';
     await manager.initialize("chrome", mainURL);
   });
+
+  Before({ tags: '@ConsultaGuias' }, async () => {
+    mainURL = 'https://apiv2-test.coordinadora.com';
+    await manager.initialize("chrome", mainURL);
+  });
   
   Given("abre la pagina {string}", async (string) => {
     await manager.navigate(string);

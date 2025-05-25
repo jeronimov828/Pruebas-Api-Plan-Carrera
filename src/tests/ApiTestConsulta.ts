@@ -31,16 +31,33 @@ Given(
   }
 );
 
-Given("quiero consultar la informacion de la guia creada", () => {
-  console.log(`Consultando guia`);
-});
+Given(
+  "quiero consultar la informacion de la guia creada",
+  async function (this: IWorld) {
+    const responseJson = await requestApi.json();
+
+    console.log("Campos recibidos en la respuesta:", responseJson);
+
+    // Validar que venga el campo 'data.codigo_remision'
+    expect(responseJson).toHaveProperty("data.codigo_remision");
+
+    // Validar que ese valor no esté vacío
+    const numeroGuia = responseJson.data.codigo_remision;
+    expect(typeof numeroGuia).toBe("string");
+    expect(numeroGuia.length).toBeGreaterThan(5);
+
+    // Adjuntarlo al reporte
+    await this.attach(`Número de guía creado: ${numeroGuia}`, "text/plain");
+  }
+);
 
 When("envie la peticion al servicio", async function (this: IWorld) {
   const peticionConsulta = new PeticionConsultarGuia();
+  const responseJson = await requestApi.json();
+  const numeroGuia = responseJson.data.codigo_remision;
 
   // Usa la guía creada anteriormente
-  const response = await peticionConsulta.sendRequest(this.numeroGuiaCreada);
-  this.response = response;
+  const response = await peticionConsulta.sendRequest(numeroGuia);
 
   const json = await response.json();
   console.log("Respuesta GET de la guía:", json);
@@ -53,12 +70,12 @@ When("envie la peticion al servicio", async function (this: IWorld) {
 Then(
   "debo poder ver el pais asociado a la guia y el {int}",
   async function (this: IWorld, statusCode: number) {
-    const body = await this.response.json();
+    const responseJson = await requestApi.json();
     console.log(`Then: Verificando StatusCode del POST: ${statusCode}`);
     expect(requestApi.status()).toBe(statusCode);
-    expect(body.data);
+    expect(responseJson.data);
     await this.attach(
-      `status obtenido:\n${statusCode}, \n${body}`,
+      `status obtenido:\n${statusCode}, \n${responseJson}`,
       "text/plain"
     );
   }
@@ -88,7 +105,7 @@ When(
 );
 
 Then(
-  "debo ver el error con un {int}",
+  "el sistema hara la consulta y traera un {int} pero sin nada de informacion",
   async function (this: IWorld, statusCode: number) {
     const status = this.response.status();
     const body = await this.response.json();
@@ -131,37 +148,63 @@ Given(
   }
 );
 
-Given("quiero consultar la informacion de la guia que se creo", () => {
-  console.log(`Consultando guia`);
-});
+Given(
+  "quiero consultar la informacion de la guia que se creo",
+  async function (this: IWorld) {
+    const responseJson = await requestApi.json();
+
+    console.log("Campos recibidos en la respuesta:", responseJson);
+
+    // Validar que venga el campo 'data.codigo_remision'
+    expect(responseJson).toHaveProperty("data.codigo_remision");
+
+    // Validar que ese valor no esté vacío
+    const numeroGuia = responseJson.data.codigo_remision;
+    expect(typeof numeroGuia).toBe("string");
+    expect(numeroGuia.length).toBeGreaterThan(5);
+
+    // Adjuntarlo al reporte
+    await this.attach(`Número de guía creado: ${numeroGuia}`, "text/plain");
+  }
+);
 
 When(
   "envie la peticion al servicio de consulta",
   async function (this: IWorld) {
     const peticionConsulta = new PeticionConsultarGuia();
+    const responseJson = await requestApi.json(); // respuesta de crear guía
+    const numeroGuia = responseJson.data.codigo_remision;
 
-    // Usa la guía creada anteriormente
-    const response = await peticionConsulta.sendRequest(this.numeroGuiaCreada);
-    this.response = response;
+    const response = await peticionConsulta.sendRequest(numeroGuia);
+    const consultaJson = await response.json();
 
-    const json = await response.json();
-    console.log("Respuesta GET de la guía:", json);
+    // Guardas la respuesta de consulta para usar después
+    this.consultaGuia = consultaJson;
+
+    console.log("Respuesta GET de la guía:", consultaJson);
     await this.attach(
-      `Respuesta GET:\n${JSON.stringify(json, null, 2)}`,
+      `Respuesta GET:\n${JSON.stringify(consultaJson, null, 2)}`,
       "application/json"
     );
   }
 );
 
 Then(
-  "debo poder ver el nivel de servicio en la informacion de la guia y el {int}",
-  async function (this: IWorld, statusCode: number) {
-    const body = await this.response.json();
-    console.log(`Then: Verificando StatusCode del POST: ${statusCode}`);
-    expect(requestApi.status()).toBe(statusCode);
-    expect(body.data);
+  "debo poder ver el nivel de servicio en la informacion de la guia y el {int} y que sea {int}",
+  async function (
+    this: IWorld,
+    statusCode: number,
+    expectedNivelServicio: number
+  ) {
+    const consultaGuia = this.consultaGuia; // accedes a lo que guardaste en el When
+
+    const actualNivelServicio = consultaGuia.data.nivelServicio;
+
+    // Puedes agregar validación de status si guardaste también el response completo
+    expect(actualNivelServicio).toBe(expectedNivelServicio);
+
     await this.attach(
-      `status obtenido:\n${statusCode}, \n${body}`,
+      `Status esperado: ${statusCode}\nNivel de Servicio esperado: ${expectedNivelServicio}\nNivel de Servicio real: ${actualNivelServicio}`,
       "text/plain"
     );
   }

@@ -14,7 +14,7 @@ Feature: Consulta de guias
     Scenario Outline: consulta de guia que no existe
         Given que voy a utlizar el microservicio de consulta de guias en test
         When envie la peticion al servicio de consulta con un numero de guia que no existe
-        Then el sistema hara ka consulta y traera un <statusCode> pero sin nada de informacion
+        Then el sistema hara la consulta y traera un <statusCode> pero sin nada de informacion
         Examples:
             | statusCode |
             | 200        |
@@ -24,7 +24,7 @@ Feature: Consulta de guias
         Given que cree una guia con nivel de servicio 22
         And quiero consultar la informacion de la guia que se creo
         When envie la peticion al servicio de consulta
-        Then debo poder ver el nivel de servicio en la informacion de la guia y el <statusCode>
+        Then debo poder ver el nivel de servicio en la informacion de la guia y el <statusCode> y que sea <nivelServicio>
         Examples:
-            | statusCode |
-            | 200        |
+            | statusCode | nivelServicio |
+            | 200        | 22            |
